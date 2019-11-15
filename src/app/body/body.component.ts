@@ -15,10 +15,22 @@ export class BodyComponent implements OnInit {
     this.code = alias;
     this.service = serve;
   }
+
+  private list : any;  //user 데이터를 그려줄 리스트
+  private list2 : any;  //dash 데이터를 그려줄 리스트
+
   @Input()  set getShowType(arg: any) {
-    this.code.forEach(item => {    // 배열  1: A타입 2: B타입  for 문
+    this.code.forEach((item, index) => {    // 배열  1: A타입 2: B타입  for 문
       if (item.type == arg){
-        this.service.getData(item.url, {});
+        this.service.getData(item.url, {}, (result)=>{
+          if(index == 0){  //A값이면
+            this.list = result;
+            this.list2 = null;
+          } else {  //B값이면
+            this.list = null;
+            this.list2 = result;
+          }
+        });
       }
     });
   } // 아까 @Output의 반대

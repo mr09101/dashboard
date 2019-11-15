@@ -1,4 +1,12 @@
-<p>
-    body works!
-    {{getShowType}}
-</p>
+<table class='table'>
+    <tr *ngFor="let item of list">
+      <td>{{item.id}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.date}}</td>
+    </tr>
+    <tr *ngFor="let item of list2">
+      <td>{{item.title}}</td>
+      <td>{{item.desc}}</td>
+      <td>{{item.date}}</td>
+    </tr>  
+</table>
